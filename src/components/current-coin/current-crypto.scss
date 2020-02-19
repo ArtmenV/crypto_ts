@@ -1,0 +1,37 @@
+.current--coin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw - 20%);
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: #ededed;
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+  }
+
+    &__item > strong {
+      margin-right: 1rem;
+    }
+}

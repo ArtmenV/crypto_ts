@@ -1,0 +1,39 @@
+.head--dreawer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin-top: 5px;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+.ant-drawer-content {
+  background-color: rgb(217, 244, 255) !important;
+}
+
+.ant-drawer-header {
+  background-color: #037BFF !important;
+  color: white;
+  border-radius: 0;
+
+  .ant-drawer-title {
+    color: white;
+  }
+}
+
+.ant-drawer-header {
+  position: relative;
+  padding: 16px 24px;
+  color: rgba(0, 0, 0, 0.65);
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 0 !important;
+}

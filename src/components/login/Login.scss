@@ -1,0 +1,30 @@
+.header__login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 25px;
+  color: white;
+  transition: .3s ease-in-out;
+  margin-right: .7rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(45, 147, 255);
+    border-radius: 2px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    &:hover {
+      color: #000356;
+    }
+  }
+}
+
+
+

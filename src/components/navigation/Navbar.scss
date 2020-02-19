@@ -1,0 +1,56 @@
+.header--nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: #037BFF;
+  position: relative;
+
+  .logo--container {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 1rem;
+  }
+
+  .text-light {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: azure;
+      transition: .5s ease;
+    }
+
+    h5 {
+      margin-bottom: 0;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .sidebar {
+    z-index: 1000;
+    position: absolute;
+    top: 2px;
+    left: 7px;
+  }
+}
+
+
+
