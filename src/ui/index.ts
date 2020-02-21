@@ -16,6 +16,10 @@ export const Paragraph = styled.p`
   color: white;
 `;
 
+export const HeadTitle =  styled.h1`
+  color: ${props => props.theme.color};
+`;
+
 export const ButtonSuccess =  styled.button<{primary: string}>`
 	max-width: 100px;
 	border-radius: 6px;

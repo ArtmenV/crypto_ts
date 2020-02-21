@@ -1,14 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useSelector } from "react-redux";
 
-import styled from 'styled-components';
+import { ThemeProvider } from "styled-components";
 
 import { AllCryptoCoinTable} from "../../components/index/all-crypto-coin-table";
 
 
 import {AppState} from "../../store";
 
-import {Section, Paragraph, ButtonSuccess} from '../../ui/index';
+import {Section, Paragraph, ButtonSuccess, HeadTitle} from '../../ui/index';
 
 export const Home = () => {
 
@@ -18,15 +18,24 @@ export const Home = () => {
 
 	let primary = isLoading ? 'primary' : ''
 
+	let theme = {};
+
+	isLoading ? theme = {color: "blue"} : theme = {color: "green"}
+
+
 	return (
 		<div>
+			<ThemeProvider theme={theme}>
+				<ButtonSuccess primary={primary}>
+					Click
+				</ButtonSuccess>
+				<HeadTitle>Hello</HeadTitle>
+			</ThemeProvider>
 				<Section>
 					<Paragraph>
 						Look at my buttons, they are amazing buttons !
 					</Paragraph>
-					<ButtonSuccess primary={primary}>
-						Click
-					</ButtonSuccess>
+
 				</Section>
 
 			<section className="home">

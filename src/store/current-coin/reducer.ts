@@ -5,6 +5,8 @@ import {
   ICurrentCoinInfo,
 } from "./types";
 
+import produce from "immer"
+
 export const initialState: ICurrentCoinInfo = {
   currentCoin: {
     id: '',
@@ -28,50 +30,37 @@ export const CurrentCoinInfoReducer = (
   state: ICurrentCoinInfo = initialState,
   action: ActionsType | any
 ): ICurrentCoinInfo => {
-  switch (action.type) {
+  return produce(state, draft => {
+    switch (action.type) {
+      case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_START:
+        draft.isLoading = true
+        break
 
-    case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_START:
-      return {
-        ...state,
-        isLoading: true
-      };
+      case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_SUCCESS:
+        draft.isLoading = false
+        draft.currentCoin = action.payload
+        break
 
-    case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        currentCoin: action.payload
-      };
+      case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_ERROR:
+        draft.isLoading = true
+        break
 
-    case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        isError: action.payload
-      };
+      case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_START:
+        draft.isLoading = true
+        break
 
-    //for exchange price
-    case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_START:
-      return {
-        ...state,
-        isLoading: true
-      };
+      case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_SUCCESS:
+        draft.isLoading = false
+        draft.exchangePrice = action.payload
+        break
 
-    case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        exchangePrice: action.payload
-      };
+      case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_ERROR:
+        draft.isLoading = false
+        draft.isError = action.payload
+        break
 
-    case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        isError: action.payload
-      };
-
-    default:
-      return state;
-  }
+      default:
+        return draft;
+    }
+  })
 };

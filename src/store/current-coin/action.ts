@@ -43,7 +43,7 @@ export const currentCoinMarket = (data: string) => async (
     const markets = await instAPI({
       url: `/assets/${data}/markets`,
       method: "get"
-    });
+    })
     dispatch({
       type: CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_SUCCESS,
       payload: markets.data.data
