@@ -10,7 +10,7 @@ export const Paragraph = styled.p`
   font-size: 14px;
   line-height: 18px;
   color: #4a4a4a;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   background-color: red;
   padding: 15px;
   color: white;
