@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import { Profile } from "../profile/profile";
 import { Login } from "../login/Login";
 import { Sidebar } from "./sidebar";
-
+import { SignUp } from '../sign-up/sign-up'
+ 
 import './Navbar.scss'
 
 export const Navbar = () => {
@@ -19,6 +20,7 @@ export const Navbar = () => {
         </NavLink>
         <div className="logo--container">
           <Profile />
+          <SignUp />
           <Login/>
         </div>
       </nav>
