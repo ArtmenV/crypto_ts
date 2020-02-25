@@ -53,21 +53,6 @@ export const SignUp: React.FC = () => {
     <section className="sign-up--page">
       <FormStyle>
         <Form onSubmit={onSubmit}
-        //   validate={values => {
-        //   const errors = {}
-        //   if (!values.username) {
-        //     errors.username = 'Required'
-        //   }
-        //   if (!values.password) {
-        //     errors.password = 'Required'
-        //   }
-        //   if (!values.confirm) {
-        //     errors.confirm = 'Required'
-        //   } else if (values.confirm !== values.password) {
-        //     errors.confirm = 'Must match'
-        //   }
-        //   return errors
-        // }}
           render={({ handleSubmit, form, submitting, pristine, values }) => (
             <form onSubmit={handleSubmit}>
               <h4>Sign up</h4>

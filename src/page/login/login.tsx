@@ -5,7 +5,7 @@ import { Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
 
 import { IUserAuthData } from '../../store/userAuth/types'
 import { userAuth } from '../../store/userAuth/action'
-import { useHistory } from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 import 'antd/dist/antd.css';
 import './login.scss'
@@ -66,8 +66,6 @@ export const Login: React.FC = () => {
             />
           </Form.Item>
 
-
-
           <Form.Item>
             <div className="form--check">
               <Checkbox>Remember me</Checkbox>
@@ -80,9 +78,10 @@ export const Login: React.FC = () => {
                 Log in
               </Button>
             </div>
-            Or <a href="">register now!</a>
+            Or <NavLink to='/sign-up'>
+              register now!
+            </NavLink>
           </Form.Item>
-
         </Form>
       </div>
     </section>

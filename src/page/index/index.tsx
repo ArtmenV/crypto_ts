@@ -22,21 +22,20 @@ export const Home = () => {
 
 	isLoading ? theme = {color: "blue"} : theme = {color: "green"}
 
-
 	return (
 		<div>
-			<ThemeProvider theme={theme}>
-				<ButtonSuccess primary={primary}>
-					Click
-				</ButtonSuccess>
-				<HeadTitle>Hello</HeadTitle>
-			</ThemeProvider>
-				<Section>
-					<Paragraph>
-						Look at my buttons, they are amazing buttons !
-					</Paragraph>
+			{/*<ThemeProvider theme={theme}>*/}
+			{/*	<ButtonSuccess primary={primary}>*/}
+			{/*		Click*/}
+			{/*	</ButtonSuccess>*/}
+			{/*	<HeadTitle>Hello</HeadTitle>*/}
+			{/*</ThemeProvider>*/}
+			{/*	<Section>*/}
+			{/*		<Paragraph>*/}
+			{/*			Look at my buttons, they are amazing buttons !*/}
+			{/*		</Paragraph>*/}
 
-				</Section>
+			{/*	</Section>*/}
 
 			<section className="home">
 				<AllCryptoCoinTable />

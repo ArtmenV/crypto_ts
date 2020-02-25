@@ -1,16 +1,4 @@
-import styled, { css } from "styled-components";
-
-const btn = (light: string, dark: string) => css`
-  white-space: nowrap;
-  display: inline-block;
-  border-radius: 5px;
-  padding: 5px 15px;
-  font-size: 16px;
-  color: white;
-  &:visited {
-    color: white;
-  }
-`;
+import styled from "styled-components";
 
 export default styled.div`
   font-family: sans-serif;
