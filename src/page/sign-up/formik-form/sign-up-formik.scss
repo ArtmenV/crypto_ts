@@ -1,0 +1,26 @@
+.formik {
+	display: flex;
+	margin: 3rem auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 960px;
+}
+
+.form--filds{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-bottom: none !important;
+
+	.form--field {
+		min-width: 320px;
+		max-width: 420px;
+
+		input {
+			width: 100%;
+		}
+	}
+
+}

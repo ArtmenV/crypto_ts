@@ -1,11 +1,12 @@
 import React, { useState }  from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Form, Field } from "react-final-form";
+import { useSelector, useDispatch } from "react-redux";
 
 import { IUserAuthData } from '../../store/userAuth/types'
 import { userAuth } from '../../store/userAuth/action'
 import { useHistory } from "react-router-dom";
 import FormStyle from '../../ui/form-style'
+import { ReactFinalForm } from './react-final-form/react-final-form'
 
 import 'antd/dist/antd.css';
 import './sign-up.scss'
@@ -13,7 +14,7 @@ import './sign-up.scss'
 type FormElem = React.FormEvent<HTMLFormElement>;
 
 interface IReset {
- reset: any
+  reset: any
 }
 
 export const SignUp: React.FC = () => {
@@ -51,74 +52,74 @@ export const SignUp: React.FC = () => {
   return (
     <section className="sign-up--page">
       <FormStyle>
-        <Form onSubmit={onSubmit}>
-          validate={values => {
-          const errors = {}
-          if (!values.username) {
-            errors.username = 'Required'
-          }
-          if (!values.password) {
-            errors.password = 'Required'
-          }
-          if (!values.confirm) {
-            errors.confirm = 'Required'
-          } else if (values.confirm !== values.password) {
-            errors.confirm = 'Must match'
-          }
-          return errors
-        }}
-          {({ handleSubmit, form, submitting, pristine, values }) => (
+        <Form onSubmit={onSubmit}
+        //   validate={values => {
+        //   const errors = {}
+        //   if (!values.username) {
+        //     errors.username = 'Required'
+        //   }
+        //   if (!values.password) {
+        //     errors.password = 'Required'
+        //   }
+        //   if (!values.confirm) {
+        //     errors.confirm = 'Required'
+        //   } else if (values.confirm !== values.password) {
+        //     errors.confirm = 'Must match'
+        //   }
+        //   return errors
+        // }}
+          render={({ handleSubmit, form, submitting, pristine, values }) => (
             <form onSubmit={handleSubmit}>
               <h4>Sign up</h4>
               <label>First Name <strong>*</strong></label>
-                <div>
-                  <Field
-                    name="firstName"
-                    component="input"
-                    type="text"
-                    // placeholder="First Name"
-                  />
-                </div>
+              <div>
+                <Field
+                  name="firstName"
+                  component="input"
+                  type="text"
+                  // placeholder="First Name"
+                />
+              </div>
 
               <label>Last Name <strong>*</strong></label>
-                <div>
-                  <Field
-                    name="lastName"
-                    component="input"
-                    type="text"
-                    // placeholder="Last Name"
-                  />
-                </div>
+              <div>
+                <Field
+                  name="lastName"
+                  component="input"
+                  type="text"
+                  // placeholder="Last Name"
+                />
+              </div>
 
               <label>Email <strong>*</strong></label>
-                <div>
-                  <Field
-                    name="email"
-                    component="input"
-                    type="text"
-                    // placeholder="email"
-                  />
-                </div>
+              <div>
+                <Field
+                  name="email"
+                  component="input"
+                  type="text"
+                  // placeholder="email"
+                />
+              </div>
 
               <label>Password <strong>*</strong> </label>
-                <div>
-                  <Field
-                    name="password"
-                    component="input"
-                    type="text"
-                    // placeholder="password"
-                  />
-                </div>
+              <div>
+                <Field
+                  name="password"
+                  component="input"
+                  type="text"
+                  // placeholder="password"
+                />
+              </div>
 
               <label>Repeat password <strong>*</strong></label>
-                <div>
-                  <Field
-                    name="repeat password"
-                    component="input"
-                    type="text"
-                    // placeholder="Repeat password"
-                  />
-                </div>
+              <div>
+                <Field
+                  name="repeat password"
+                  component="input"
+                  type="text"
+                  // placeholder="Repeat password"
+                />
+              </div>
               <div className="submit--section">
                 <button
                   type="button"
@@ -131,11 +132,9 @@ export const SignUp: React.FC = () => {
                 </button>
               </div>
             </form>
-          )}
+          )}>
         </Form>
       </FormStyle>
     </section>
   );
 };
-
-
