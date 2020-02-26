@@ -1,11 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 // import { useSelector } from "react-redux";
 
 import { AllCryptoCoinTable} from "../../components/index/all-crypto-coin-table";
+import { $api } from "../../api/api";
 
 // import {AppState} from "../../store";
 
 export const Home = () => {
+
+	// useEffect(() => {
+	// 	async function fetchMyAPI() {
+	// 		try {
+	// 			const response = await $api.login({})
+	// 			console.log(response);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		} finally {
+	// 			console.log('err');
+	// 		}
+	// 	}
+	//
+	// 	fetchMyAPI();
+	// }, [])
 
 	// const isLoading = useSelector(
 	// 	(state: AppState) => state.CryptoReducer.isLoading

@@ -6,7 +6,7 @@ import { userLogout } from "../../store/userAuth/action";
 
 import './Login.scss'
 
-export const Login: React.FC = (): any => {
+export const Login: React.FC = () => {
 
   let location = useLocation<string>();
 

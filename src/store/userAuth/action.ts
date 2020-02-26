@@ -5,7 +5,8 @@ import {
 } from "./types";
 
 import { Dispatch } from "redux";
-import axios from "axios";
+import { $api } from '../../api/api'
+// import axios from "axios";
 
 export const userAuth = ({username, password}: IUserAuthData) => async (
   dispatch: Dispatch
@@ -18,7 +19,7 @@ export const userAuth = ({username, password}: IUserAuthData) => async (
     type: UserAuthActionTypes.USER_LOGIN_START
   });
   try {
-    const userData = await axios.post('https://demo-dpchallengeapi.zimalab.com/api/auth/login', data)
+    const userData = await $api.login(data)
 
     localStorage.setItem('user', userData.data.username)
     localStorage.setItem('token', userData.data.token)
