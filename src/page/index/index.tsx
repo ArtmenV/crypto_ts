@@ -38,6 +38,7 @@ export const Home = () => {
 			{/*	</Section>*/}
 
 			<section className="home">
+				{process.env.REACT_APP_URL}
 				<AllCryptoCoinTable />
 			</section>
 		</div>
