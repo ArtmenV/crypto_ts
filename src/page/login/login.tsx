@@ -1,7 +1,7 @@
 import React, { useState }  from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import { IUserAuthData } from '../../store/userAuth/types'
 import { userAuth } from '../../store/userAuth/action'
@@ -24,9 +24,6 @@ export const Login: React.FC = () => {
 
   const authUser = useSelector(
     (state: any) => state.UserAuthReducer.userAuthData
-  )
-  const isError = useSelector(
-    (state: any) => state.UserAuthReducer.isError
   )
 
   let history = useHistory();
@@ -69,7 +66,7 @@ export const Login: React.FC = () => {
           <Form.Item>
             <div className="form--check">
               <Checkbox>Remember me</Checkbox>
-              <a className="login-form-forgot" href="">
+              <a className="login-form-forgot" href="/sign-up">
                 Forgot password
               </a>
             </div>

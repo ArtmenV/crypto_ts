@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useLocation, useRouteMatch } from "react-router-dom";
 
@@ -10,7 +10,6 @@ import { currentCoin } from "../../store/current-coin/action";
 import './current-crypto.scss'
 
 export const CurrentCrypto = () => {
-  const [coin, setCoin] = useState([])
 
   const params:any = useParams()
   const location = useLocation()
@@ -24,7 +23,7 @@ export const CurrentCrypto = () => {
 
   useEffect(() => {
     dispatch(currentCoin(params.id))
-  }, [params.id])
+  }, [dispatch, params.id])
 
   const data = useSelector(
     (state: any) => state.CurrentCoinInfoReducer.currentCoin.data

@@ -1,26 +1,21 @@
-import React, {useEffect} from "react";
-import { useSelector } from "react-redux";
-
-import { ThemeProvider } from "styled-components";
+import React from "react";
+// import { useSelector } from "react-redux";
 
 import { AllCryptoCoinTable} from "../../components/index/all-crypto-coin-table";
 
-
-import {AppState} from "../../store";
-
-import {Section, Paragraph, ButtonSuccess, HeadTitle} from '../../ui/index';
+// import {AppState} from "../../store";
 
 export const Home = () => {
 
-	const isLoading = useSelector(
-		(state: AppState) => state.CryptoReducer.isLoading
-	)
+	// const isLoading = useSelector(
+	// 	(state: AppState) => state.CryptoReducer.isLoading
+	// )
 
-	let primary = isLoading ? 'primary' : ''
+	// let primary = isLoading ? 'primary' : ''
 
-	let theme = {};
-
-	isLoading ? theme = {color: "blue"} : theme = {color: "green"}
+	// let theme = {};
+	//
+	// isLoading ? theme = {color: "blue"} : theme = {color: "green"}
 
 	return (
 		<div>
@@ -38,7 +33,7 @@ export const Home = () => {
 			{/*	</Section>*/}
 
 			<section className="home">
-				{process.env.REACT_APP_URL}
+				{/*{process.env.REACT_APP_URL}*/}
 				<AllCryptoCoinTable />
 			</section>
 		</div>

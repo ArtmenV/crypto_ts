@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { SignUpFinalForm } from "../sign-up/sign-up-final-form";
-import { SignUpFinalFormik } from "../sign-up/sign-up-formik";
+// import { SignUpFinalForm } from "../sign-up/sign-up-final-form";
+// import { SignUpFinalFormik } from "../sign-up/sign-up-formik";
 import { Profile } from "../profile/profile";
 import { Login } from "../login/Login";
 import { Sidebar } from "./sidebar";

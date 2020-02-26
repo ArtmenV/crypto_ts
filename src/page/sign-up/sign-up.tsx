@@ -1,12 +1,9 @@
-import React, { useState }  from "react";
+import React from "react";
 import { Form, Field } from "react-final-form";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { IUserAuthData } from '../../store/userAuth/types'
-import { userAuth } from '../../store/userAuth/action'
 import { useHistory } from "react-router-dom";
 import FormStyle from '../../ui/form-style'
-import { ReactFinalForm } from './react-final-form/react-final-form'
 
 import 'antd/dist/antd.css';
 import './sign-up.scss'
@@ -18,7 +15,6 @@ interface IReset {
 }
 
 export const SignUp: React.FC = () => {
-  const [isMount, useIsMount] = useState(false)
 
   // const [user, setUserAuth] = useState<IUserAuthData>({
   //   username: '',
@@ -31,14 +27,8 @@ export const SignUp: React.FC = () => {
   const authUser = useSelector(
     (state: any) => state.UserAuthReducer.userAuthData
   )
-  const isError = useSelector(
-    (state: any) => state.UserAuthReducer.isError
-  )
 
   let history = useHistory();
-
-  const dispatch = useDispatch();
-
 
   if ( authUser.token ) {
     history.push('/')

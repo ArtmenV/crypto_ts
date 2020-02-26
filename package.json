@@ -43,8 +43,8 @@
     "yup": "^0.28.1"
   },
   "scripts": {
-    "start": "env-cmd -f .env.development react-scripts start",
-    "demo": "env-cmd -f .env.production react-scripts start mode=demo",
+    "start": "PORT=8000 env-cmd -f .env.development react-scripts start",
+    "demo": "env-cmd -f .env.production react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

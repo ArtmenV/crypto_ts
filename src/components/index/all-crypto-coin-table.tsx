@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { BounceLoader } from "react-spinners";
@@ -22,21 +22,13 @@ export const AllCryptoCoinTable = () => {
   )
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(cryptoAddAction());
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => {
-    changePage(1, 50)
-  }, [cryptoData]);
-
-  const override = css`
-    margin: 0 auto;
-    margin-top: 3rem;
-  `;
-
-  const changePage = (page: any, pageSize:any):void => {
-    if (page == 1) {
+  const changePage = useCallback((page: any, pageSize:any):void => {
+    if (page === 1) {
       const pagination = cryptoData.slice(0, 50);
       // @ts-ignore
       setAllCoin(pagination)
@@ -47,7 +39,16 @@ export const AllCryptoCoinTable = () => {
       // @ts-ignore
       setAllCoin(pagination)
     }
-  }
+  }, [cryptoData])
+
+  useEffect(() => {
+    changePage(1, 50)
+  }, [changePage, cryptoData]);
+
+  const override = css`
+    margin: 0 auto;
+    margin-top: 3rem;
+  `;
 
   if ( isLoading ) {
     return (

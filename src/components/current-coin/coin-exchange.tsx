@@ -30,7 +30,7 @@ export const CoinExchange = () => {
 
   useEffect(() => {
     dispatch(currentCoinMarket(params.id))
-  }, [params.id])
+  }, [dispatch, params.id])
 
 	const override = css`
     margin: 0 auto;

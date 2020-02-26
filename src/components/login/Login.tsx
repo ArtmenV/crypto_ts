@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import {  useDispatch } from "react-redux";
 
 import { userLogout } from "../../store/userAuth/action";
 
@@ -12,17 +11,12 @@ export const Login: React.FC = (): any => {
   let location = useLocation<string>();
 
   const dispatch = useDispatch();
-  let history = useHistory();
-
-  const authUser = useSelector(
-    (state: any)  => state.UserAuthReducer
-  )
 
   const handleLogout = () => {
     dispatch(userLogout())
   }
 
-  const data = localStorage.getItem('token')
+  // const data = localStorage.getItem('token')
 
   if ( location.pathname !== '/login') {
     return (

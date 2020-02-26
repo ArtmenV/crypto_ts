@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { Drawer, Button, Radio } from 'antd';
+import { Drawer } from 'antd';
 
 import './sidebar.scss'
 

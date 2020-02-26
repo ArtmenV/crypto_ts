@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { ReactFinalForm } from "./page/sign-up/react-final-form/react-final-form";
-import { SignUpFormik } from "./page/sign-up/formik-form/sign-up-formik";
 import { Navbar } from "./components/navigation/Navbar";
 import { SignUp } from "./page/sign-up/sign-up";
 import { CurrentCoin } from "./page/current-coin";
@@ -34,13 +32,6 @@ const App: React.FC = () => {
         <Route exact path="/sign-up">
           <SignUp/>
         </Route>
-        {/*<Route exact path="/sign-up-final-form">*/}
-        {/*  <ReactFinalForm/>*/}
-        {/*</Route>*/}
-
-        {/*<Route exact path="/sign-up-formik-form">*/}
-        {/*  <SignUpFormik/>*/}
-        {/*</Route>*/}
 
         <Route exact path="/current-crypto/:id">
           <CurrentCoin />
