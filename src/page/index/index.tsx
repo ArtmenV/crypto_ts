@@ -35,7 +35,7 @@ export const Home = () => {
 	// isLoading ? theme = {color: "blue"} : theme = {color: "green"}
 
 	return (
-		<div>
+		<>
 			{/*<ThemeProvider theme={theme}>*/}
 			{/*	<ButtonSuccess primary={primary}>*/}
 			{/*		Click*/}
@@ -53,7 +53,7 @@ export const Home = () => {
 				{/*{process.env.REACT_APP_URL}*/}
 				<AllCryptoCoinTable />
 			</section>
-		</div>
+		</>
 	);
 };
 

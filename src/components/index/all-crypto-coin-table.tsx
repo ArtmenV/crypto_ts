@@ -62,7 +62,7 @@ export const AllCryptoCoinTable = () => {
   }
 
   return (
-    <section>
+    <>
       <div className="container table--header">
         <div className="pagination">
           <Pagination 
@@ -132,6 +132,6 @@ export const AllCryptoCoinTable = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };

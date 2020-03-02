@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 type ChildrenType = {
-	children?: React.ReactNode
+	children: React.ReactNode
 	path: string
 	exact: boolean
 }
