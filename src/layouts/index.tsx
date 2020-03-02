@@ -8,10 +8,8 @@ export const IndexLayout: React.FC<React.ReactNode> = ({children}) => {
 			<Navbar/>
 			{children}
 			<footer>
-				<div>footer</div>
+				<div></div>
 			</footer>
 		</>
 	)
 };
-
-// export default IndexLayout;

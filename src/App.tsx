@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { IndexLayout } from './layouts/index'
-
-import { Navbar } from "./components/navigation/Navbar";
 import { SignUp } from "./page/sign-up/sign-up";
 import { CurrentCoin } from "./page/current-coin";
 import { Profile } from "./page/profile/index";
 import { AuthRoute } from "./routes/AuthRoute";
+import { IndexLayout } from './layouts/index'
 import { Login } from "./page/login/login";
 import { Home } from './page/index'
 
@@ -23,10 +21,6 @@ const App: React.FC = () => {
             <AuthRoute exact path="/">
               <Home />
             </AuthRoute>
-
-            <Route exact path="/">
-              <Home />
-            </Route>
 
             <Route exact path="/login">
               <Login />
@@ -55,3 +49,18 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+// const routes = [{
+//   path: '/',
+//   component: HomePage,
+// }, {
+//   path: '/Teachers',
+//   component: TeacherListPage,
+// }, {
+//   path: '/Teachers/:teacherId',
+//   component: TeacherPage,
+// }, {
+//   path: '/Teachers/:teacherId/Classes',
+//   component: TaughtClassesPage,
+// }, /* And so on. */];
