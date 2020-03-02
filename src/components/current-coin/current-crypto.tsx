@@ -19,6 +19,10 @@ export const CurrentCrypto = () => {
   console.log('location', location)
   console.log('match', match)
 
+  // console.log('params', params)
+  // console.log('location', location)
+  // console.log('match', match)
+
   const dispatch = useDispatch()
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import {CurrentCoinInfoReducer} from "./current-coin/reducer";
+import { CurrentCoinInfoReducer } from "./current-coin/reducer";
 import { CryptoReducer } from "./getApiData/reducer";
 import { UserAuthReducer } from "./userAuth/reducer";
 import thunk from "redux-thunk";

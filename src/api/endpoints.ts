@@ -1,9 +1,5 @@
 import { baseUrl } from './config'
 
-const endpoints = {
+export const endpoints = {
 	login: baseUrl + '/auth/login',
-}
-
-export {
-	endpoints
 }
