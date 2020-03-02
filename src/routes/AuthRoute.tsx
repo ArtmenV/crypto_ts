@@ -7,7 +7,6 @@ import {
 
 type ChildrenType = {
 	children?: React.ReactNode
-	rest?: React.ReactNode
 	path: string
 	exact: boolean
 }
