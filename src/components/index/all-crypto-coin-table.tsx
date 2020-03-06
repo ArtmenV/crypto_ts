@@ -7,19 +7,70 @@ import { Pagination } from 'antd';
 
 import { selectAllCryptoCoin } from '../../utils/selectors/home-page'
 import { cryptoAddAction } from "../../store/getApiData/action";
-import { CryptoDatasItem } from "./crypto-coin-table-item";
 import { AppState } from "../../store";
 
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Table from '@material-ui/core/Table';
+import Paper from '@material-ui/core/Paper';
+
 import './all-crypto-coin-table.scss'
+import {NavLink} from "react-router-dom";
+
+interface IAllCrypto {
+  supply: number;
+  changePercent24Hr: string;
+  volumeUsd24Hr: string;
+  rank: string;
+  id: string;
+  symbol: string;
+  name: string;
+  priceUsd: number;
+  marketCapUsd: number;
+  marketFullCap: string
+  changePrice: string
+}
+
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: '#dadada',
+    color: '#black',
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
+}))(TableRow);
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 700,
+  },
+});
 
 export const AllCryptoCoinTable = () => {
   const [allCoin, setAllCoin] = useState([])
+
+  const classes = useStyles();
 
   const cryptoData = useSelector(selectAllCryptoCoin)
 
   const isLoading = useSelector(
     (state: AppState) => state.CryptoReducer.isLoading
   )
+  
+  // const
 
   const dispatch = useDispatch();
 
@@ -30,6 +81,8 @@ export const AllCryptoCoinTable = () => {
   const changePage = useCallback((page: any, pageSize:any):void => {
     if (page === 1) {
       const pagination = cryptoData.slice(0, 50);
+      
+      console.log('cryptoData', pagination)
       // @ts-ignore
       setAllCoin(pagination)
     } else {
@@ -64,73 +117,77 @@ export const AllCryptoCoinTable = () => {
   return (
     <>
       <div className="container table--header">
+  
         <div className="pagination">
-          <Pagination 
-            defaultCurrent={1} 
-            total={500} 
-            defaultPageSize={50} 
+          <Pagination
+            defaultCurrent={1}
+            total={500}
+            defaultPageSize={50}
             onChange={changePage}
           />
         </div>
-        <div className="row--item">
-          <div className="column__number">
-          <span className="text-size text__position-left">
-            <strong>#</strong>
-          </span>
-          </div>
-          <div className="column__name">
-          <span className="text-size">
-            <strong>Name</strong>
-          </span>
-          </div>
-          <div className="column__marketcap column--hidden__marketcap">
-          <span className="text-size">
-            <strong>Market Cap</strong>
-          </span>
-          </div>
-          <div className="column__price">
-          <span className="text-size">
-            <strong>Price</strong>
-          </span>
-          </div>
-          <div className="column__volume column--hidden__volume">
-          <span className="text-size">
-            <strong>Volume(24)</strong>
-          </span>
-          </div>
-          <div className="column__supply column__hidden">
-          <span className="text-size">
-            <strong>Coin Supply</strong>
-          </span>
-          </div>
-          <div className="column--hidden__change-price">
-          <span className="text-size">
-            <strong>Change Price</strong>
-          </span>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <ul className="list-group my-10 list-group-flush">
-              {allCoin.map((crypto: { supply: any; changePercent24Hr: any; volumeUsd24Hr: any; rank: any; id: any; symbol: any; name: any; priceUsd: any; marketCapUsd: any; }) => {
-                return (
-                  <CryptoDatasItem
-                    supply={crypto.supply}
-                    changePrice={crypto.changePercent24Hr}
-                    volume={crypto.volumeUsd24Hr}
-                    rank={crypto.rank}
-                    key={crypto.id}
-                    coinName={crypto.id}
-                    symbol={crypto.symbol}
-                    name={crypto.name}
-                    price={crypto.priceUsd}
-                    marketCap={crypto.marketCapUsd}
-                  />
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+        
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="customized table">
+        
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>#</StyledTableCell>
+                <StyledTableCell align="right">
+                  Name
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  Market Cap
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  Price
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  Volume(24)
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  Coin Supply
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  Change Price
+                </StyledTableCell>
+              </TableRow>
+            </TableHead>
+        
+            <TableBody>
+              {allCoin.map((row: IAllCrypto, index: number) => (
+                <StyledTableRow key={index}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.rank}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <NavLink to={`/current-crypto/${row.id}`} className="text-size">
+                      {row.name}
+                    </NavLink>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row.marketCapUsd}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <NavLink exact to="/market">
+                      ${row.priceUsd}
+                    </NavLink>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    ${row.volumeUsd24Hr}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    ${row.supply}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    { row.changePercent24Hr} %
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+      
+          </Table>
+        </TableContainer>
       </div>
     </>
   );

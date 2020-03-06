@@ -66,26 +66,6 @@ export const CurrentCrypto = () => {
           </div>
         </h3>
       </div>
-      <div className="current--coin__item">
-        <strong>Market Cap</strong>
-        <strong>Volume (24h)</strong>
-        <strong>Circulating Supply</strong>
-        <strong>Max Supply</strong>
-      </div>
-      <div className="current--coin__value">
-        <div>
-          { Number(data.marketCapUsd).toFixed(0) }
-        </div>
-        <div>
-          { Number(data.volumeUsd24Hr).toFixed(0)}
-        </div>
-        <div>
-          { Number(data.supply).toFixed(0) }
-        </div>
-        <div>
-          { Number(data.maxSupply).toFixed(0) }
-        </div>
-      </div>
     </div>
   )
 }

@@ -2,13 +2,22 @@ import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Table from '@material-ui/core/Table';
+import Paper from '@material-ui/core/Paper';
+
 import { BounceLoader } from "react-spinners";
 import { css}  from "@emotion/core";
 
 import {currentCoinMarket} from "../../store/current-coin/action";
-import {ExchangeItem} from "./exchange-item";
 
-import "../index/crypto-coin-table-item.scss";
+// import "../index/crypto-coin-table-item.scss";
+
 
 export interface IMarket {
 	UserAuthReducer: {
@@ -16,9 +25,46 @@ export interface IMarket {
 	};
 }
 
+interface IProps {
+	exchangeId: string,
+	baseId: string,
+	quoteId: string,
+	baseSymbol: string,
+	quoteSymbol: string,
+	volumeUsd24Hr: string,
+	priceUsd: string,
+	volumePercent: string,
+	index: number
+}
+
+const StyledTableCell = withStyles(theme => ({
+	head: {
+		backgroundColor: '#dadada',
+		color: '#black',
+	},
+	body: {
+		fontSize: 14,
+	},
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+	root: {
+		'&:nth-of-type(odd)': {
+			backgroundColor: theme.palette.background.default,
+		},
+	},
+}))(TableRow);
+
+const useStyles = makeStyles({
+	table: {
+		minWidth: 700,
+	},
+});
+
 export const CoinExchange = () => {
   const dispatch = useDispatch()
   const params:any = useParams()
+	const classes = useStyles();
 
 	const market = useSelector(
 		(state: any) => state.CurrentCoinInfoReducer.exchangePrice
@@ -31,7 +77,7 @@ export const CoinExchange = () => {
   useEffect(() => {
     dispatch(currentCoinMarket(params.id))
   }, [dispatch, params.id])
-
+	
 	const override = css`
     margin: 0 auto;
     margin-top: 3rem;
@@ -50,52 +96,37 @@ export const CoinExchange = () => {
 
 	return (
 		<div className="container">
-			<div className="row--item">
-				<div className="column__number">
-      <span className="text-size text__position-left">
-        <strong>#</strong>
-      </span>
-				</div>
-				<div className="column__name">
-      <span className="text-size">
-        <strong>Name</strong>
-      </span>
-				</div>
-				<div className="column__marketcap column--hidden__marketcap">
-      <span className="text-size">
-        <strong>Market Cap</strong>
-      </span>
-				</div>
-				<div className="column__price">
-      <span className="text-size">
-        <strong>Price</strong>
-      </span>
-				</div>
-				<div className="column__volume column--hidden__volume">
-      <span className="text-size">
-        <strong>Volume(24)</strong>
-      </span>
-				</div>
-				<div className="column__supply column__hidden">
-      <span className="text-size">
-        <strong>Coin Supply</strong>
-      </span>
-				</div>
-			</div>
-			<div className="row">
-				<div className="col-lg-12">
-					<ul className="list-group my-10 list-group-flush">
-						{market.map( (item: { index: any; }, index: any) => {
-							return (
-								<ExchangeItem {...item}
-									index={index}
-									key={item.index}
-								/>
-							)
-						})}
-					</ul>
-				</div>
-			</div>
+			
+			<TableContainer component={Paper}>
+				<Table className={classes.table} aria-label="customized table">
+					
+					<TableHead>
+						<TableRow>
+							<StyledTableCell>#</StyledTableCell>
+							<StyledTableCell align="right">Name</StyledTableCell>
+							<StyledTableCell align="right">Market Cap</StyledTableCell>
+							<StyledTableCell align="right">Price</StyledTableCell>
+							<StyledTableCell align="right">Volume(24)</StyledTableCell>
+						</TableRow>
+					</TableHead>
+					
+					<TableBody>
+						{market.map((row: IProps, index: number) => (
+							<StyledTableRow key={index}>
+								<StyledTableCell component="th" scope="row">
+									{row.exchangeId}
+								</StyledTableCell>
+								<StyledTableCell align="right">{row.exchangeId}</StyledTableCell>
+								<StyledTableCell align="right">{row.quoteId}</StyledTableCell>
+								<StyledTableCell align="right">${Number(row.priceUsd).toFixed(2)}</StyledTableCell>
+								<StyledTableCell align="right">${Number(row.volumeUsd24Hr).toFixed(2)}</StyledTableCell>
+							</StyledTableRow>
+						))}
+					</TableBody>
+					
+				</Table>
+			</TableContainer>
+
 		</div>
 	)
-};
+}

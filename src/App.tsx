@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { SignUp } from "./page/sign-up/sign-up";
-import { CurrentCoin } from "./page/current-coin";
-import { Profile } from "./page/profile/index";
+import { SignUp } from "./pages/sign-up/sign-up";
+import { CurrentCoin } from "./pages/current-coin";
+import { Profile } from "./pages/profile/index";
 import { AuthRoute } from "./routes/AuthRoute";
 import { IndexLayout } from './layouts/index'
-import { Login } from "./page/login/login";
-import { Home } from './page/index'
+import { Login } from "./pages/login/login";
+import { Home } from './pages/index'
 
 import "./App.css";
 
