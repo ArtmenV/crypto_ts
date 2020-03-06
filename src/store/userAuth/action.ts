@@ -5,7 +5,7 @@ import {
 } from "./types";
 
 import { Dispatch } from "redux";
-import { $api } from '../../api/api'
+import { $apiAuth } from '../../api/api'
 // import axios from "axios";
 
 export const userAuth = ({username, password}: IUserAuthData) => async (
@@ -19,7 +19,7 @@ export const userAuth = ({username, password}: IUserAuthData) => async (
     type: UserAuthActionTypes.USER_LOGIN_START
   });
   try {
-    const userData = await $api.login(data)
+    const userData = await $apiAuth.login(data)
 
     localStorage.setItem('user', userData.data.username)
     localStorage.setItem('token', userData.data.token)

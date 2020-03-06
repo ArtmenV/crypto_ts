@@ -1,4 +1,7 @@
-const baseUrl = process.env.REACT_APP_URL
+const baseUrlAuth = process.env.REACT_APP_URL_AUTH
+const baseUrlCryptoCoin = "https://cors-anywhere.herokuapp.com/http://api.coincap.io/v2"
+
+console.log('baseUrlCryptoCoin', baseUrlCryptoCoin)
 
 const token = () => {
 	return localStorage.getItem('token')
@@ -45,7 +48,8 @@ const buildRequestConfigAuthOnly = () => {
 }
 
 export {
-	baseUrl,
+	baseUrlAuth,
+	baseUrlCryptoCoin,
 	requestConfig,
 	buildRequestConfigAuth,
 	buildRequestConfigAuthOnly,

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Pagination } from 'antd';
 
-import { selectAllCryptoCoin } from '../../utils/selectors/home-page'
+import { selectAllCryptoCoin } from '../../store/all-coin/selectors'
 
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';

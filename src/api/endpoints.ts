@@ -1,5 +1,9 @@
-import { baseUrl } from './config'
+import { baseUrlAuth, baseUrlCryptoCoin } from './config'
 
-export const endpoints = {
-	login: baseUrl + '/auth/login',
+export const endpointsAuth = {
+	login: baseUrlAuth + '/auth/login',
+}
+
+export const endpointsCryptoCoin = {
+	getCoin: baseUrlCryptoCoin,
 }

@@ -5,7 +5,7 @@ import {
 	// buildRequestConfigAuthOnly,
 	// buildRequestConfigOptionalAuth
 } from './config'
-import { endpoints } from './endpoints'
+import { endpointsAuth, endpointsCryptoCoin } from './endpoints'
 
 interface IEndpoint {
 	endpoint: string
@@ -54,13 +54,23 @@ const postRequest = (endpoint: any, payload: any) =>
 // const getRequestOptionalAuthParams = (endpoint: any, params: any) =>
 // 	axios.get((<string>endpoint, params), buildRequestConfigOptionalAuth())
 //
-// const getRequestParams = (endpoint: any, params: any) =>
-// 	getRequest((<string>endpoint, params))
+const getRequestParams = (endpoint: string) =>
+	axios.get(<string>endpoint, requestConfig)
 
-export const $api = {
+export const $apiAuth = {
 	login: ( payload: any ) =>
-		postRequest(endpoints.login, payload)
+		postRequest(endpointsAuth.login, payload)
 }
+
+export const $apiGetCryptoCoin = {
+	getCoin: ( payload: string ) =>
+		getRequestParams(endpointsCryptoCoin.getCoin + payload)
+	// getCoin() {
+	// 	return getRequest(endpointsCryptoCoin.getCoin, )
+	// }
+	
+}
+
 
 	// $api.login({})
 	// .then(res => {

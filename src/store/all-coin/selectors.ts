@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { AppState } from "../../store";
+import { AppState } from "../index";
 
 export const selectAllCryptoCoin = createSelector(
 	( state: AppState ) => state.CryptoReducer.allCryptoPrice,

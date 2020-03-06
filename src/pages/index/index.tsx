@@ -5,7 +5,7 @@ import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
 import { AllCryptoCoinTable } from "../../components/index/all-crypto-coin-table";
-import { cryptoAddAction } from "../../store/getApiData/action";
+import { cryptoAddAction } from "../../store/all-coin/action";
 import { Loader } from "../../ui/loader";
 import { AppState } from "../../store";
 

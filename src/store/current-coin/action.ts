@@ -4,7 +4,7 @@ import {
 } from "./types";
 
 import { Dispatch } from "redux";
-import { instAPI } from "../../api/index";
+import { $apiGetCryptoCoin } from "../../api/api";
 
 export const currentCoin = (data: string) => async (
   dispatch: Dispatch
@@ -15,10 +15,9 @@ export const currentCoin = (data: string) => async (
   });
 
   try {
-    const coin = await instAPI({
-      url: `/assets/${data}`,
-      method: "get"
-    });
+    debugger
+    const coin = await $apiGetCryptoCoin.getCoin(`/assets/${data}`);
+
     dispatch({
       type: CurrentCoinInfoActionTypes.GET_CURRENT_COIN_SUCCESS,
       payload: coin.data
@@ -40,10 +39,7 @@ export const currentCoinMarket = (data: string) => async (
   });
 
   try {
-    const markets = await instAPI({
-      url: `/assets/${data}/markets`,
-      method: "get"
-    })
+    const markets = await  $apiGetCryptoCoin.getCoin(`/assets/${data}/markets`)
 
     dispatch({
       type: CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_SUCCESS,

@@ -3,7 +3,7 @@ import {
 } from "./types";
 
 import { Dispatch } from "redux";
-import { instAPI } from "../../api/index";
+import { $apiGetCryptoCoin } from "../../api/api";
 
 export const cryptoAddAction = () => async (
   dispatch: Dispatch
@@ -14,10 +14,7 @@ export const cryptoAddAction = () => async (
   });
 
   try {
-    const cryptoData = await instAPI({
-      url: `/assets?limit=500`,
-      method: "get"
-    });
+    const cryptoData = await $apiGetCryptoCoin.getCoin();
     dispatch({
       type: AllCryptoDataActionTypes.ADD_DATA_SUCCESS,
       payload: cryptoData.data.data
