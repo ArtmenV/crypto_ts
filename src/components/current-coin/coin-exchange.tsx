@@ -11,14 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 
-import { BounceLoader } from "react-spinners";
-import { css}  from "@emotion/core";
-
-import {currentCoinMarket} from "../../store/current-coin/action";
-
-// import "../index/crypto-coin-table-item.scss";
-
-
 export interface IMarket {
 	UserAuthReducer: {
 		market: Array<any>
@@ -74,26 +66,6 @@ export const CoinExchange = () => {
 		(state: any) => state.CurrentCoinInfoReducer.isLoading
 	)
 
-  useEffect(() => {
-    dispatch(currentCoinMarket(params.id))
-  }, [dispatch, params.id])
-	
-	const override = css`
-    margin: 0 auto;
-    margin-top: 3rem;
-  `;
-
-  if ( !market ) {
-	  return (
-		  <BounceLoader
-			  css={override}
-			  size={40}
-			  color={"#037BFF"}
-			  loading={isLoading}
-		  />
-	  )
-  }
-
 	return (
 		<div className="container">
 			
@@ -116,7 +88,7 @@ export const CoinExchange = () => {
 								<StyledTableCell component="th" scope="row">
 									{row.exchangeId}
 								</StyledTableCell>
-								<StyledTableCell align="right">{row.exchangeId}</StyledTableCell>
+								<StyledTableCell size='small' align="right">{row.exchangeId}</StyledTableCell>
 								<StyledTableCell align="right">{row.quoteId}</StyledTableCell>
 								<StyledTableCell align="right">${Number(row.priceUsd).toFixed(2)}</StyledTableCell>
 								<StyledTableCell align="right">${Number(row.volumeUsd24Hr).toFixed(2)}</StyledTableCell>

@@ -26,10 +26,11 @@ export interface ICurrentExchange {
 }
 
 export interface ICurrentCoinInfo {
-  currentCoin: ICurrentCoin;
-  exchangePrice: Array<ICurrentExchange>;
-  isLoading: boolean;
-  isError: boolean;
+  currentCoin: ICurrentCoin
+  exchangePrice: Array<ICurrentExchange>
+  isLoadingCurrentCoin: boolean
+  isLoadingExchangePrice: boolean
+  isError: boolean
 }
 
 export enum CurrentCoinInfoActionTypes {

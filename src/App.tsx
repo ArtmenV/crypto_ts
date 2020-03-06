@@ -16,33 +16,31 @@ const App: React.FC = () => {
   return (
     <>
       <IndexLayout>
-        <main>
-          <Switch>
-            <AuthRoute exact path="/">
-              <Home />
-            </AuthRoute>
+        <Switch>
+          <AuthRoute exact path="/">
+            <Home />
+          </AuthRoute>
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
 
-            <Route exact path="/sign-up">
-              <SignUp/>
-            </Route>
+          <Route exact path="/sign-up">
+            <SignUp/>
+          </Route>
 
-            <Route exact path="/current-crypto/:id">
-              <CurrentCoin />
-            </Route>
+          <Route exact path="/current-crypto/:id">
+            <CurrentCoin />
+          </Route>
 
-            <AuthRoute exact path="/profile">
-              <Profile/>
-            </AuthRoute>
+          <AuthRoute exact path="/profile">
+            <Profile/>
+          </AuthRoute>
 
-            <Route path='*'>
-              <div>Page not found...</div>
-            </Route>
-          </Switch>
-        </main>
+          <Route path='*'>
+            <div>Page not found...</div>
+          </Route>
+        </Switch>
       </IndexLayout>
     </>
   );

@@ -1,56 +1,38 @@
-import React, {useEffect} from "react";
-// import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AllCryptoCoinTable} from "../../components/index/all-crypto-coin-table";
-import {store} from "../../store";
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
-// import {AppState} from "../../store";
+import { AllCryptoCoinTable } from "../../components/index/all-crypto-coin-table";
+import { cryptoAddAction } from "../../store/getApiData/action";
+import { Loader } from "../../ui/loader";
+import { AppState } from "../../store";
 
 export const Home = () => {
-
+	const dispatch = useDispatch();
+	
 	useEffect(() => {
-		// async function fetchMyAPI() {
-		// 	try {
-		// 		const response = await $api.login({})
-		// 		console.log(response);
-		// 	} catch (err) {
-		// 		console.log(err);
-		// 	} finally {
-		// 		console.log('err');
-		// 	}
-		// }
-		//
-		// fetchMyAPI();
-		console.log('store', store.getState())
-	}, [])
-
-	// const isLoading = useSelector(
-	// 	(state: AppState) => state.CryptoReducer.isLoading
-	// )
-
-	// let primary = isLoading ? 'primary' : ''
-
-	// let theme = {};
-	//
-	// isLoading ? theme = {color: "blue"} : theme = {color: "green"}
+	  dispatch(cryptoAddAction());
+	}, [dispatch]);
+	
+	const isLoading = useSelector(
+		(state: AppState) => state.CryptoReducer.isLoading
+	)
+	
+	const override = css`
+    margin: 0 auto;
+    margin-top: 3rem;
+  `;
+	
+	if ( isLoading ) {
+	  // @ts-ignore
+		return <Loader/>
+	}
 
 	return (
 		<>
-			{/*<ThemeProvider theme={theme}>*/}
-			{/*	<ButtonSuccess primary={primary}>*/}
-			{/*		Click*/}
-			{/*	</ButtonSuccess>*/}
-			{/*	<HeadTitle>Hello</HeadTitle>*/}
-			{/*</ThemeProvider>*/}
-			{/*	<Section>*/}
-			{/*		<Paragraph>*/}
-			{/*			Look at my buttons, they are amazing buttons !*/}
-			{/*		</Paragraph>*/}
-
-			{/*	</Section>*/}
-
 			<section className="home">
-				{/*{process.env.REACT_APP_URL}*/}
 				<AllCryptoCoinTable />
 			</section>
 		</>

@@ -45,7 +45,7 @@
     "yup": "^0.28.1"
   },
   "scripts": {
-    "start": "PORT=6696 env-cmd -f .env.development react-scripts start",
+    "start": "PORT=3111 env-cmd -f .env.development react-scripts start",
     "demo": "env-cmd -f .env.production react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

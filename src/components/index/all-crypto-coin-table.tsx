@@ -1,13 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
 import { Pagination } from 'antd';
 
 import { selectAllCryptoCoin } from '../../utils/selectors/home-page'
-import { cryptoAddAction } from "../../store/getApiData/action";
-import { AppState } from "../../store";
 
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -35,12 +31,24 @@ interface IAllCrypto {
   changePrice: string
 }
 
+//style for table
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: '#dadada',
     color: '#black',
   },
   body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableName = withStyles(theme => ({
+  head: {
+    backgroundColor: '#dadada',
+    color: '#black',
+  },
+  body: {
+    width: '15%',
     fontSize: 14,
   },
 }))(TableCell);
@@ -59,30 +67,22 @@ const useStyles = makeStyles({
   },
 });
 
+///// component
 export const AllCryptoCoinTable = () => {
   const [allCoin, setAllCoin] = useState([])
-
   const classes = useStyles();
-
   const cryptoData = useSelector(selectAllCryptoCoin)
-
-  const isLoading = useSelector(
-    (state: AppState) => state.CryptoReducer.isLoading
-  )
-  
-  // const
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(cryptoAddAction());
-  }, [dispatch]);
+  
+  // const handler = useCallback(() => {
+  //   dispatch(cryptoAddAction());
+  // }, []);
 
   const changePage = useCallback((page: any, pageSize:any):void => {
     if (page === 1) {
       const pagination = cryptoData.slice(0, 50);
       
-      console.log('cryptoData', pagination)
+      // console.log('cryptoData', pagination)
       // @ts-ignore
       setAllCoin(pagination)
     } else {
@@ -97,23 +97,7 @@ export const AllCryptoCoinTable = () => {
   useEffect(() => {
     changePage(1, 50)
   }, [changePage, cryptoData]);
-
-  const override = css`
-    margin: 0 auto;
-    margin-top: 3rem;
-  `;
-
-  if ( isLoading ) {
-    return (
-      <BounceLoader
-        css={override}
-        size={40}
-        color={"#037BFF"}
-        loading={isLoading}
-      />
-    )
-  }
-
+  
   return (
     <>
       <div className="container table--header">
@@ -132,22 +116,30 @@ export const AllCryptoCoinTable = () => {
         
             <TableHead>
               <TableRow>
-                <StyledTableCell>#</StyledTableCell>
+                <StyledTableCell>
+                  #
+                </StyledTableCell>
+                
                 <StyledTableCell align="right">
                   Name
                 </StyledTableCell>
+                
                 <StyledTableCell align="right">
                   Market Cap
                 </StyledTableCell>
+                
                 <StyledTableCell align="right">
                   Price
                 </StyledTableCell>
+                
                 <StyledTableCell align="right">
                   Volume(24)
                 </StyledTableCell>
+                
                 <StyledTableCell align="right">
                   Coin Supply
                 </StyledTableCell>
+                
                 <StyledTableCell align="right">
                   Change Price
                 </StyledTableCell>
@@ -157,31 +149,39 @@ export const AllCryptoCoinTable = () => {
             <TableBody>
               {allCoin.map((row: IAllCrypto, index: number) => (
                 <StyledTableRow key={index}>
+                  
                   <StyledTableCell component="th" scope="row">
                     {row.rank}
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  
+                  <StyledTableName align="right">
                     <NavLink to={`/current-crypto/${row.id}`} className="text-size">
                       {row.name}
                     </NavLink>
-                  </StyledTableCell>
+                  </StyledTableName>
+                  
                   <StyledTableCell align="right">
                     {row.marketCapUsd}
                   </StyledTableCell>
+                  
                   <StyledTableCell align="right">
                     <NavLink exact to="/market">
                       ${row.priceUsd}
                     </NavLink>
                   </StyledTableCell>
+                  
                   <StyledTableCell align="right">
                     ${row.volumeUsd24Hr}
                   </StyledTableCell>
+                  
                   <StyledTableCell align="right">
                     ${row.supply}
                   </StyledTableCell>
+                  
                   <StyledTableCell align="right">
                     { row.changePercent24Hr} %
                   </StyledTableCell>
+                  
                 </StyledTableRow>
               ))}
             </TableBody>

@@ -22,7 +22,8 @@ export const initialState: ICurrentCoinInfo = {
     vwap24Hr: ''
   },
   exchangePrice: [],
-  isLoading: false,
+  isLoadingCurrentCoin: false,
+  isLoadingExchangePrice: false,
   isError: false,
 };
 
@@ -33,29 +34,29 @@ export const CurrentCoinInfoReducer = (
   return produce(state, draft => {
     switch (action.type) {
       case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_START:
-        draft.isLoading = true
+        draft.isLoadingCurrentCoin = true
         break
 
       case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_SUCCESS:
-        draft.isLoading = false
+        draft.isLoadingCurrentCoin = false
         draft.currentCoin = action.payload
         break
 
       case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_ERROR:
-        draft.isLoading = true
+        draft.isLoadingCurrentCoin = true
         break
 
       case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_START:
-        draft.isLoading = true
+        draft.isLoadingExchangePrice = true
         break
 
       case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_SUCCESS:
-        draft.isLoading = false
+        draft.isLoadingExchangePrice = false
         draft.exchangePrice = action.payload
         break
 
       case CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_ERROR:
-        draft.isLoading = false
+        draft.isLoadingExchangePrice = false
         draft.isError = action.payload
         break
 
