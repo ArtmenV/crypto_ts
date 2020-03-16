@@ -11,7 +11,7 @@ type ThunkType = ThunkAction<Promise<void>, AppState, unknown, Action<string>>
 
 export const cryptoAddAction = (): ThunkType => async (
   dispatch: Dispatch
-): Promise<void> => {
+) => {
 
   dispatch({
     type: AllCryptoDataActionTypes.ADD_DATA_START
@@ -19,7 +19,7 @@ export const cryptoAddAction = (): ThunkType => async (
 
   const config = {
     params: {
-      limit: 100
+      limit: 500
     }
   }
   try {

@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { currentCoin, currentCoinMarket } from "../../store/current-coin/action";
 import { CurrentCrypto } from '../../components/current-coin/current-crypto'
 import { CoinExchange } from '../../components/current-coin/coin-exchange'
-import { Loader } from "../../ui/loader";
-import { currentCoin, currentCoinMarket } from "../../store/current-coin/action";
 import { useParams } from "react-router-dom";
+import { Loader } from "../../ui/loader";
 
+interface RouteParams {
+	id: string
+}
 
 export const CurrentCoin = () => {
 	
-	const params:any = useParams()
+	const params = useParams<RouteParams>()
 	const dispatch = useDispatch()
 	
 	useEffect(() => {
@@ -21,14 +24,6 @@ export const CurrentCoin = () => {
 		dispatch(currentCoinMarket(params.id))
 	}, [dispatch, params.id])
 	
-	// const exchangePrice = useSelector(
-	// 	(state: any) => state.CurrentCoinInfoReducer.exchangePrice
-	// )
-	//
-	// const dataCoin = useSelector(
-	// 	(state: any) => state.CurrentCoinInfoReducer.currentCoin.data
-	// )
-	//
 	const isLoading = useSelector(
 		(state: any) =>
 			state.CurrentCoinInfoReducer.isLoadingCurrentCoin &&
@@ -38,8 +33,6 @@ export const CurrentCoin = () => {
 	if ( isLoading ) {
 		return <Loader />
 	}
-	
-	// console.log('loading', exchangePrice)
 	
 	return (
 		<section className="current--coin">
