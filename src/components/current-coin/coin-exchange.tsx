@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
-import {useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
+// import {useParams} from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -54,17 +54,17 @@ const useStyles = makeStyles({
 });
 
 export const CoinExchange = () => {
-  const dispatch = useDispatch()
-  const params:any = useParams()
+  // const dispatch = useDispatch()
+  // const params:any = useParams()
 	const classes = useStyles();
 
 	const market = useSelector(
 		(state: any) => state.CurrentCoinInfoReducer.exchangePrice
 	)
 
-	const isLoading = useSelector(
-		(state: any) => state.CurrentCoinInfoReducer.isLoading
-	)
+	// const isLoading = useSelector(
+	// 	(state: any) => state.CurrentCoinInfoReducer.isLoading
+	// )
 
 	return (
 		<div className="container">

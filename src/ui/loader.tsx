@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react";
+import React from "react";
 
 import { BounceLoader } from "react-spinners";
 import { css }  from "@emotion/core";

@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {BounceLoader} from "react-spinners";
-import { css } from "@emotion/core";
-
 import { CurrentCrypto } from '../../components/current-coin/current-crypto'
 import { CoinExchange } from '../../components/current-coin/coin-exchange'
 import { Loader } from "../../ui/loader";
 import { currentCoin, currentCoinMarket } from "../../store/current-coin/action";
-import { useLocation, useParams, useRouteMatch } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 export const CurrentCoin = () => {

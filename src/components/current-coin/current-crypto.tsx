@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams, useLocation, useRouteMatch } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+// import { useParams, useLocation, useRouteMatch } from "react-router-dom";
 
 import './current-crypto.scss'
 
 
 export const CurrentCrypto: React.FC= () => {
 
-  const params:any = useParams()
-  const location = useLocation()
-  const match = useRouteMatch()
+  // const params:any = useParams()
+  // const location = useLocation()
+  // const match = useRouteMatch()
   
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const data = useSelector(
     (state: any) => state.CurrentCoinInfoReducer.currentCoin.data
@@ -26,7 +26,7 @@ export const CurrentCrypto: React.FC= () => {
       <div>
         <h3 className="current--coin__title">{data.name || ''}
           <small>
-           &nbsp; ({data.symbol}):
+          &nbsp; ({data.symbol}):
           </small>
           <div>
             &nbsp; { Number(data.priceUsd).toFixed(2) }$

@@ -2,8 +2,6 @@
 const baseUrlAuth = "https://demo-dpchallengeapi.zimalab.com/api"
 const baseUrlCryptoCoin = "https://cors-anywhere.herokuapp.com/http://api.coincap.io/v2"
 
-https://demo-dpchallengeapi.zimalab.com/api
-
 console.log('baseUrlCryptoCoin', baseUrlCryptoCoin)
 
 const token = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Pagination } from 'antd';
 
@@ -72,7 +72,6 @@ export const AllCryptoCoinTable = () => {
   const [allCoin, setAllCoin] = useState([])
   const classes = useStyles();
   const cryptoData = useSelector(selectAllCryptoCoin)
-  const dispatch = useDispatch();
   
   // const handler = useCallback(() => {
   //   dispatch(cryptoAddAction());
