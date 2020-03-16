@@ -3,20 +3,24 @@ import {
   CurrentCoinExchangePriceInfoActionTypes
 } from "./types";
 
-import { Dispatch } from "redux";
+import { Dispatch, Action } from "redux";
+import { AppState } from '../index'
 import { $apiGetCryptoCoin } from "../../api/api";
+import { ThunkAction } from "redux-thunk";
 
-export const currentCoin = (data: string) => async (
+type ThunkType = ThunkAction<Promise<void>, AppState, unknown, Action<string>>
+
+export const currentCoin = (data: string): ThunkType => async (
   dispatch: Dispatch
-): Promise<void> => {
+) => {
 
   dispatch({
     type: CurrentCoinInfoActionTypes.GET_CURRENT_COIN_START
   });
-
+  
+  const config = `/${data}`
   try {
-    debugger
-    const coin = await $apiGetCryptoCoin.getCoin(`/assets/${data}`);
+    const coin = await $apiGetCryptoCoin.getCurrentCoin(config);
 
     dispatch({
       type: CurrentCoinInfoActionTypes.GET_CURRENT_COIN_SUCCESS,
@@ -30,16 +34,18 @@ export const currentCoin = (data: string) => async (
   }
 };
 
-export const currentCoinMarket = (data: string) => async (
+export const currentCoinMarket = (data: string): ThunkType => async (
   dispatch: Dispatch
-): Promise<void> => {
+) => {
 
   dispatch({
     type: CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_START
   });
 
+  const config = `/${data}/markets`
+  // debugger
   try {
-    const markets = await  $apiGetCryptoCoin.getCoin(`/assets/${data}/markets`)
+    const markets = await  $apiGetCryptoCoin.getCurrentCoin(config)
 
     dispatch({
       type: CurrentCoinExchangePriceInfoActionTypes.GET_CURRENT_COIN_PRICE_SUCCESS,

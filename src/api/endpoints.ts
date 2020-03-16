@@ -5,5 +5,8 @@ export const endpointsAuth = {
 }
 
 export const endpointsCryptoCoin = {
-	getCoin: baseUrlCryptoCoin,
+	getCoin: baseUrlCryptoCoin + `/assets`,
+	// getCurrentCoin: baseUrlCryptoCoin + `/assets`,
 }
+
+export const getCurrentCoin = (data: any) => baseUrlCryptoCoin + `/assets${data}/assets`

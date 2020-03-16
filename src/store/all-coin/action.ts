@@ -2,10 +2,14 @@ import {
   AllCryptoDataActionTypes
 } from "./types";
 
-import { Dispatch } from "redux";
 import { $apiGetCryptoCoin } from "../../api/api";
+import { ThunkAction } from "redux-thunk";
+import { Dispatch, Action } from "redux";
+import { AppState } from '../index'
 
-export const cryptoAddAction = () => async (
+type ThunkType = ThunkAction<Promise<void>, AppState, unknown, Action<string>>
+
+export const cryptoAddAction = (): ThunkType => async (
   dispatch: Dispatch
 ): Promise<void> => {
 
@@ -13,8 +17,13 @@ export const cryptoAddAction = () => async (
     type: AllCryptoDataActionTypes.ADD_DATA_START
   });
 
+  const config = {
+    params: {
+      limit: 100
+    }
+  }
   try {
-    const cryptoData = await $apiGetCryptoCoin.getCoin();
+    const cryptoData = await $apiGetCryptoCoin.getCoin(config);
     dispatch({
       type: AllCryptoDataActionTypes.ADD_DATA_SUCCESS,
       payload: cryptoData.data.data

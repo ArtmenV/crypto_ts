@@ -4,13 +4,17 @@ import {
   UserLogoutActionTypes,
 } from "./types";
 
-import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { Dispatch, Action } from "redux";
 import { $apiAuth } from '../../api/api'
-// import axios from "axios";
+import { AppState } from '../index'
 
-export const userAuth = ({username, password}: IUserAuthData) => async (
+
+type ThunkType = ThunkAction<Promise<void>, AppState, unknown, Action<string>>
+
+export const userAuth = ({username, password}: IUserAuthData): ThunkType => async (
   dispatch: Dispatch
-): Promise<void> => {
+) => {
   const data = {
     username,
     password

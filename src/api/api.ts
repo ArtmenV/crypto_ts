@@ -22,7 +22,7 @@ interface IEndpoint {
 // }
 
 const postRequest = (endpoint: any, payload: any) =>
-	axios.post(endpoint, JSON.stringify(payload), requestConfig)
+	axios.post(endpoint, payload, requestConfig)
 
 // const postRequestAuth = (endpoint: any, payload: any) =>
 // 	axios.post(endpoint, JSON.stringify(payload), buildRequestConfigAuth())
@@ -54,8 +54,11 @@ const postRequest = (endpoint: any, payload: any) =>
 // const getRequestOptionalAuthParams = (endpoint: any, params: any) =>
 // 	axios.get((<string>endpoint, params), buildRequestConfigOptionalAuth())
 //
-const getRequestParams = (endpoint: string) =>
-	axios.get(<string>endpoint, requestConfig)
+const getRequestParams = (endpoint:any, payload:any) =>
+	axios.get(endpoint, payload)
+
+const getRequest = (endpoint:any) =>
+	axios.get(endpoint)
 
 export const $apiAuth = {
 	login: ( payload: any ) =>
@@ -63,12 +66,11 @@ export const $apiAuth = {
 }
 
 export const $apiGetCryptoCoin = {
-	getCoin: ( payload: string ) =>
-		getRequestParams(endpointsCryptoCoin.getCoin + payload)
-	// getCoin() {
-	// 	return getRequest(endpointsCryptoCoin.getCoin, )
-	// }
-	
+	getCoin: (payload:any) =>
+		getRequestParams(endpointsCryptoCoin.getCoin, payload),
+
+	getCurrentCoin: (stroke: string) =>
+		getRequest(endpointsCryptoCoin.getCoin + stroke)
 }
 
 
