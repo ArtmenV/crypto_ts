@@ -1,6 +1,5 @@
 .container {
   padding: 0;
-  max-width: calc(100vw - 20%);
 
   .pagination {
     display: flex;
@@ -10,102 +9,15 @@
   }
 }
 
-.row--item {
-  display: flex;
-  justify-content: space-between;
-  padding: .5rem .5rem;
-  background: #ededed;
-}
-
-.text__position-left {
-  display: flex;
-}
-
-.column__number {
-  width: 40px;
-}
-
-.column__name {
-  width: 120px;
-  display: flex;
-}
-
-.column__marketcap {
-  width: 120px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.column__volume {
-  width: 120px;
-  display: flex;
-  justify-content: flex-end;
-  padding-left: 3rem;
-}
-
-.column__price {
-  width: 125px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.column__supply {
-  width: 120px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.row {
-  margin-top: 10px !important;
-  margin: 20px 0;
-}
-
-.column--hidden__change-price {
-  display: flex;
-  justify-content: flex-end;
-  width: 120px;
-}
-
-@media ( max-width: 1080px ) {
-  .column__hidden {
-    display: none;
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: calc(100vw - 20%);
   }
 }
 
-@media ( max-width: 840px ) {
-  .column--hidden__volume {
-    display: none;
-  }
-}
-
-@media ( max-width: 670px ) {
-  .column--hidden__marketcap {
-    display: none;
-  }
-
-  .column__price {
-    width: 100px;
-  }
-
-  .column__name {
-    width: 100px;
-  }
-
-  .column__number {
-    width: 30px;
-  }
-
-  .column__volume {
-    width: 90px;
-  }
-}
-
-@media ( max-width: 480px ) {
-  .column--hidden__change-price {
-    display: none;
-  }
-  .column--hidden__change-price-inner {
-    display: none;
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: calc(100vw - 15%);
   }
 }
 

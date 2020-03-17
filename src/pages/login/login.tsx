@@ -5,7 +5,8 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import { IUserAuthData } from '../../store/userAuth/types'
 import { userAuth } from '../../store/userAuth/action'
-import {NavLink, useHistory} from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import { AppState } from '../../store/index'
 
 import 'antd/dist/antd.css';
 import './login.scss'
@@ -13,7 +14,8 @@ import './login.scss'
 type FormElem = React.FormEvent<HTMLFormElement>;
 
 export const Login: React.FC = () => {
-
+  let history = useHistory();
+  const dispatch = useDispatch();
   const [user, setUserAuth] = useState<IUserAuthData>({
     username: '',
     password: '',
@@ -23,21 +25,15 @@ export const Login: React.FC = () => {
   })
 
   const authUser = useSelector(
-    (state: any) => state.UserAuthReducer.userAuthData
+    (state: AppState) => state.UserAuthReducer.userAuthData
   )
-
-  let history = useHistory();
-
-  const dispatch = useDispatch();
 
   const handleSubmit = (e: FormElem) => {
     e.preventDefault();
     dispatch(userAuth(user))
   };
 
-  if ( authUser.token ) {
-    history.push('/')
-  }
+  if ( authUser.token ) history.push('/')
 
   return (
     <section className="login--page">
@@ -75,10 +71,11 @@ export const Login: React.FC = () => {
                 Log in
               </Button>
             </div>
-            Or <NavLink to='/sign-up'>
+              Or <NavLink to='/sign-up'>
               register now!
             </NavLink>
           </Form.Item>
+          
         </Form>
       </div>
     </section>

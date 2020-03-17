@@ -39,7 +39,7 @@ export const CurrentCoinInfoReducer = (
 
       case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_SUCCESS:
         draft.isLoadingCurrentCoin = false
-        draft.currentCoin = action.payload
+        draft.currentCoin = action.payload.data
         break
 
       case CurrentCoinInfoActionTypes.GET_CURRENT_COIN_ERROR:

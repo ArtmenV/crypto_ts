@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-export const SignUp: React.FC = (): any => {
+export const SignUp: React.FC = (): JSX.Element => {
 
   let location = useLocation<string>();
 

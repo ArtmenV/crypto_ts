@@ -54,19 +54,19 @@ const postRequest = (endpoint: any, payload: any) =>
 // const getRequestOptionalAuthParams = (endpoint: any, params: any) =>
 // 	axios.get((<string>endpoint, params), buildRequestConfigOptionalAuth())
 //
-const getRequestParams = (endpoint:any, payload:any) =>
+const getRequestParams = (endpoint: any, payload: any) =>
 	axios.get(endpoint, payload)
 
 const getRequest = (endpoint:any) =>
 	axios.get(endpoint)
 
 export const $apiAuth = {
-	login: ( payload: any ) =>
+	login: (payload: any) =>
 		postRequest(endpointsAuth.login, payload)
 }
 
 export const $apiGetCryptoCoin = {
-	getCoin: (payload:any) =>
+	getCoin: (payload: any) =>
 		getRequestParams(endpointsCryptoCoin.getCoin, payload),
 
 	getCurrentCoin: (stroke: string) =>

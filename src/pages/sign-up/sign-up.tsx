@@ -1,14 +1,15 @@
-import React from "react";
+import * as React from "react";
 import { Form, Field } from "react-final-form";
 import { useSelector } from "react-redux";
 
 import { useHistory } from "react-router-dom";
+import { AppState } from '../../store'
 import FormStyle from '../../ui/form-style'
 
 import 'antd/dist/antd.css';
 import './sign-up.scss'
 
-type FormElem = React.FormEvent<HTMLFormElement>;
+// type FormElem = React.FormEvent<HTMLFormElement>;
 
 interface IReset {
   reset: any
@@ -16,26 +17,15 @@ interface IReset {
 
 export const SignUp: React.FC = () => {
 
-  // const [user, setUserAuth] = useState<IUserAuthData>({
-  //   username: '',
-  //   password: '',
-  //   id: null,
-  //   token: '',
-  //   refresh_token: '',
-  // })
-
   const authUser = useSelector(
-    (state: any) => state.UserAuthReducer.userAuthData
+    (state: AppState) => state.UserAuthReducer.userAuthData
   )
 
   let history = useHistory();
 
-  if ( authUser.token ) {
-    history.push('/')
-  }
+  if ( authUser.token ) history.push('/')
 
   const onSubmit = async (values: any) => {
-    // tslint:disable-next-line no-console
     console.log(values);
   };
 

@@ -6,7 +6,7 @@ import { cryptoAddAction } from "../../store/all-coin/action";
 import { Loader } from "../../ui/loader";
 import { AppState } from "../../store";
 
-export const Home = () => {
+export const Home: React.FC = (): JSX.Element => {
 	const dispatch = useDispatch();
 	
 	useEffect(() => {
@@ -17,10 +17,7 @@ export const Home = () => {
 		(state: AppState) => state.CryptoReducer.isLoading
 	)
 	
-	if ( isLoading ) {
-	  // @ts-ignore
-		return <Loader/>
-	}
+	if ( isLoading ) return <Loader/>
 
 	return (
 		<>

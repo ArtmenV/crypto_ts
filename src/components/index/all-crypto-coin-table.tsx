@@ -1,9 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
+import * as React from "react";
 import { useSelector } from "react-redux";
-
-import { Pagination } from 'antd';
-
-import { selectAllCryptoCoin } from '../../store/all-coin/selectors'
 
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -13,22 +9,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
+import { Pagination } from 'antd';
+
+import { selectAllCryptoCoin } from '../../store/all-coin/selectors'
 
 import './all-crypto-coin-table.scss'
 import {NavLink} from "react-router-dom";
 
 interface IAllCrypto {
-  supply: number;
-  changePercent24Hr: string;
-  volumeUsd24Hr: string;
-  rank: string;
-  id: string;
-  symbol: string;
-  name: string;
-  priceUsd: number;
-  marketCapUsd: number;
-  marketFullCap: string
-  changePrice: string
+  supply: string,
+  volumeUsd24Hr: string,
+  priceUsd: string,
+  marketCapUsd: string,
+  changePercent24Hr: string,
+  id: string,
+  maxSupply: string,
+  name: string,
+  rank: string,
+  symbol: string,
+  vwap24Hr: string,
 }
 
 //style for table
@@ -67,39 +66,33 @@ const useStyles = makeStyles({
   },
 });
 
-///// component
+
 export const AllCryptoCoinTable = () => {
-  const [allCoin, setAllCoin] = useState([])
+  const [allCoin, setAllCoin] = React.useState<IAllCrypto[]>([])
   const classes = useStyles();
   const cryptoData = useSelector(selectAllCryptoCoin)
-  
-  // const handler = useCallback(() => {
-  //   dispatch(cryptoAddAction());
-  // }, []);
 
-  const changePage = useCallback((page: any, pageSize:any):void => {
+  const changePage = React.useCallback((page: any, pageSize:any):void => {
     if (page === 1) {
-      const pagination = cryptoData.slice(0, 50);
-      
-      // console.log('cryptoData', pagination)
-      // @ts-ignore
-      setAllCoin(pagination)
+      const pagination = cryptoData.slice(0, 50);    
+
+      setAllCoin(prev => [...pagination, ...prev])
     } else {
       const start = page * pageSize - 50,
-        end = start + pageSize;
+      end = start + pageSize;
       const pagination = cryptoData.slice(start, end);
-      // @ts-ignore
+
       setAllCoin(pagination)
     }
   }, [cryptoData])
 
-  useEffect(() => {
+  React.useEffect(() => {
     changePage(1, 50)
   }, [changePage, cryptoData]);
   
   return (
     <>
-      <div className="container table--header">
+      <div className="home-page container ">
   
         <div className="pagination">
           <Pagination
@@ -111,7 +104,10 @@ export const AllCryptoCoinTable = () => {
         </div>
         
         <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="customized table">
+          <Table 
+            className={classes.table} 
+            aria-label="customized table"
+          >
         
             <TableHead>
               <TableRow>

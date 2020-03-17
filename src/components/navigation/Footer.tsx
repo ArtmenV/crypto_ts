@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 
 import './Footer.scss'
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   
   const handleScrollToTop = () => {
     window.scrollTo({

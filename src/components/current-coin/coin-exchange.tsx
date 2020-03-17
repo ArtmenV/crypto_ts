@@ -11,24 +11,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 
-export interface IMarket {
-	UserAuthReducer: {
-		market: Array<any>
-	};
-}
+import { ICurrentExchange } from '../../store/current-coin/types'
+import { AppState } from '../../store/index'
 
-interface IProps {
-	exchangeId: string,
-	baseId: string,
-	quoteId: string,
-	baseSymbol: string,
-	quoteSymbol: string,
-	volumeUsd24Hr: string,
-	priceUsd: string,
-	volumePercent: string,
-	index: number
-}
-
+//style
 const StyledTableCell = withStyles(theme => ({
 	head: {
 		backgroundColor: '#dadada',
@@ -53,45 +39,59 @@ const useStyles = makeStyles({
 	},
 });
 
+//component
 export const CoinExchange = () => {
-  // const dispatch = useDispatch()
-  // const params:any = useParams()
 	const classes = useStyles();
 
 	const market = useSelector(
-		(state: any) => state.CurrentCoinInfoReducer.exchangePrice
+		(state: AppState) => state.CurrentCoinInfoReducer.exchangePrice
 	)
-
-	// const isLoading = useSelector(
-	// 	(state: any) => state.CurrentCoinInfoReducer.isLoading
-	// )
 
 	return (
 		<div className="container">
 			
 			<TableContainer component={Paper}>
-				<Table className={classes.table} aria-label="customized table">
+				<Table 
+					className={classes.table} 
+					aria-label="customized table"
+				>
 					
 					<TableHead>
 						<TableRow>
 							<StyledTableCell>#</StyledTableCell>
-							<StyledTableCell align="right">Name</StyledTableCell>
-							<StyledTableCell align="right">Market Cap</StyledTableCell>
-							<StyledTableCell align="right">Price</StyledTableCell>
-							<StyledTableCell align="right">Volume(24)</StyledTableCell>
+							<StyledTableCell align="right">
+								Name
+							</StyledTableCell>
+							<StyledTableCell align="right">
+								Market Cap
+							</StyledTableCell>
+							<StyledTableCell align="right">
+								Price
+							</StyledTableCell>
+							<StyledTableCell align="right">
+								Volume(24)
+							</StyledTableCell>
 						</TableRow>
 					</TableHead>
 					
 					<TableBody>
-						{market.map((row: IProps, index: number) => (
+						{market.map((row: ICurrentExchange, index: number): JSX.Element => (
 							<StyledTableRow key={index}>
 								<StyledTableCell component="th" scope="row">
 									{row.exchangeId}
 								</StyledTableCell>
-								<StyledTableCell size='small' align="right">{row.exchangeId}</StyledTableCell>
-								<StyledTableCell align="right">{row.quoteId}</StyledTableCell>
-								<StyledTableCell align="right">${Number(row.priceUsd).toFixed(2)}</StyledTableCell>
-								<StyledTableCell align="right">${Number(row.volumeUsd24Hr).toFixed(2)}</StyledTableCell>
+								<StyledTableCell size='small' align="right">
+									{row.exchangeId}
+								</StyledTableCell>
+								<StyledTableCell align="right">
+									{row.quoteId}
+								</StyledTableCell>
+								<StyledTableCell align="right">
+									${Number(row.priceUsd).toFixed(2)}
+								</StyledTableCell>
+								<StyledTableCell align="right">
+									${Number(row.volumeUsd24Hr).toFixed(2)}
+								</StyledTableCell>
 							</StyledTableRow>
 						))}
 					</TableBody>

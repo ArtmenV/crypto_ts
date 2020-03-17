@@ -16,8 +16,6 @@ export const Login: React.FC = () => {
     dispatch(userLogout())
   }
 
-  // const data = localStorage.getItem('token')
-
   if ( location.pathname !== '/login') {
     return (
       <div className="header__login">

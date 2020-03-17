@@ -1,25 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { useParams, useLocation, useRouteMatch } from "react-router-dom";
+
+import { AppState } from '../../store/index'
 
 import './current-crypto.scss'
 
-
-export const CurrentCrypto: React.FC= () => {
-
-  // const params:any = useParams()
-  // const location = useLocation()
-  // const match = useRouteMatch()
-  
-  // const dispatch = useDispatch()
+export const CurrentCrypto: React.FC = (): JSX.Element => {
 
   const data = useSelector(
-    (state: any) => state.CurrentCoinInfoReducer.currentCoin.data
+    (state: AppState) => state.CurrentCoinInfoReducer.currentCoin
   )
-
-  if ( !data ) {
-    return <></>
-  }
 
   return (
     <div className="current--coin">

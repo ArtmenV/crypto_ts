@@ -10,11 +10,12 @@ type ChildrenType = {
 	path: string
 	exact: boolean
 }
-export const AuthRoute: React.FC<ChildrenType> = ({
-	                                                  children,
-	                                                  exact = true,
-	                                                  path,
-}) => {
+export const AuthRoute: React.FC<ChildrenType> = 
+({
+	children,
+	exact = true,
+	path,
+}): JSX.Element => {
 
 	const authUser = localStorage.getItem('token')
 
